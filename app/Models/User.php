@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'username',
         'password',
+        'role_id',
     ];
 
     /**
@@ -41,4 +42,19 @@ class User extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public function role()
+    {
+        return $this->hasOne(RefRole::class);
+    }
+
+    public function siswa()
+    {
+        return $this->hasOne(Siswa::class); // Setiap user memiliki satu siswa
+    }
+    
+    public function guru()
+    {
+        return $this->hasOne(Guru::class); // Setiap user memiliki satu guru
+    }
 }

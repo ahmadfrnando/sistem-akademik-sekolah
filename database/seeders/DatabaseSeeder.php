@@ -33,5 +33,10 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123'),
             'role_id' => 2
         ]);
+
+        $this->call([
+            SiswaSeeder::class,
+            GuruSeeder::class,
+        ]);
     }
 }

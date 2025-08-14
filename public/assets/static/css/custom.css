@@ -1,0 +1,21 @@
+.sidebar-item > button {
+    width: 100% !important;
+    background-color: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    text-align: left !important
+    /* display: block !important;
+    padding: .7rem 1rem !important;
+    font-size: 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    border-radius: .5rem !important;
+    transition: all .5s !important;
+    text-decoration: none !important;
+    color: #25396f !important; */
+}
+
+
+.sidebar-item > button:hover{
+    background-color:#f0f1f5 !important
+}
