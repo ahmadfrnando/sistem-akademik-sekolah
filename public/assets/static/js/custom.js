@@ -37,26 +37,10 @@ function submitFormAjax(formSelector, actionUrl, successMessage, redirectUrl) {
 
 
 
-function submitFormAjaxModal(formSelector, actionUrl, successMessage, modalSelector, table, select2 = null) {
-    var toastMixin = Swal.mixin({
-            toast: true,
-            icon: 'success',
-            title: 'General Title',
-            animation: false,
-            position: 'top-right',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        });
+function submitFormAjaxModal(formSelector, actionUrl, successMessage) {
     $(formSelector).on('submit', function(e) {
         e.preventDefault();
         let form = $(this);    
-        let btnSubmit = $(formSelector).find('#btnSubmit');
-        btnSubmit.attr('disabled', true);
         $.ajax({
             url: actionUrl,
             method: 'POST',
@@ -65,32 +49,25 @@ function submitFormAjaxModal(formSelector, actionUrl, successMessage, modalSelec
                 'X-CSRF-TOKEN': $('input[name="_token"]').val()
             },
             success: function(response) {
-                location.reload();
-                toastMixin.fire({
+                Swal.fire({
                     icon: 'success',
-                    animation: true,
                     title: successMessage || `${response.message}`,
-                }); 
-                btnSubmit.attr('disabled', false);
+                    confirmButtonText: 'Oke',
+                    confirmButtonColor: '#5e72e4'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                      location.reload();
+                    }
+                });
             },
-            
             error: function(xhr) {
                 if (xhr.status === 422) {
                     let res = xhr.responseJSON;
                     let errorMessages = Object.values(res.errors).flat().join('\n');
-                    toastMixin.fire({
-                        icon: 'error',
-                        animation: true,
-                        title: errorMessages,
-                    });
+                    Swal.fire('Validasi Gagal', errorMessages, 'error');
                 } else {
-                    toastMixin.fire({
-                        icon: 'error',
-                        animation: true,
-                        title: xhr.responseJSON?.message || 'Terjadi kesalahan.',
-                    });
+                    Swal.fire('Gagal', xhr.responseJSON?.message || 'Terjadi kesalahan.', 'error');
                 }
-                btnSubmit.attr('disabled', false);
             }
         })
     });
@@ -232,4 +209,8 @@ function updateStatusAjax(url, table, status) {
         words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
       }
       input.value = words.join(' ');
+    }
+
+ function uppercaseWords(input) {
+      input.value = input.value.toUpperCase();
     }

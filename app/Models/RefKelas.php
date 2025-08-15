@@ -15,4 +15,14 @@ class RefKelas extends Model
         'id',
         'nama_kelas',
     ];
+
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class, 'kelas_id');
+    }
+
+    public function guru_kelas()
+    {
+        return $this->hasMany(GuruKelas::class, 'kelas_id');
+    }
 }

@@ -3,6 +3,9 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Admin\GuruController;
+use App\Http\Controllers\Admin\KelasController;
+use App\Http\Controllers\Admin\KelolaKelasController;
+use App\Http\Controllers\Admin\MapelController;
 use App\Http\Controllers\AjaxLoadController;
 use App\Http\Controllers\Siswa\DashboardController as SiswaDashboardController;
 use App\Http\Controllers\Guru\DashboardController as GuruDashboardController;
@@ -30,11 +33,15 @@ Route::post('/', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/search-kelas', [AjaxLoadController::class, 'getKelas'])->name('search.kelas');
 Route::get('/search-mapel', [AjaxLoadController::class, 'getMapel'])->name('search.mapel');
+Route::get('/search-guru-mapel', [AjaxLoadController::class, 'getGuruMapel'])->name('search.guru-mapel');
 
 Route::middleware(['auth', 'role:1'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/siswa', SiswaController::class);
     Route::resource('/guru', GuruController::class);
+    Route::resource('/kelas', KelasController::class);
+    Route::resource('/mapel', MapelController::class);
+    Route::resource('/kelola-kelas', KelolaKelasController::class);
     Route::get('/edit-akun/{id}', [UserController::class, 'edit'])->name('akun.edit');
     Route::put('/ubah-akun/{id}', [UserController::class, 'updateAkun'])->name('akun.update');
     Route::put('/ubah-password/{id}', [UserController::class, 'updatePassword'])->name('ubah-password.update');

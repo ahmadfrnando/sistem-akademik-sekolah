@@ -24,4 +24,19 @@ class AjaxLoadController extends Controller
 
         return response()->json($kelas);  // Kembalikan sebagai JSON
     }
+    public function getGuruMapel(Request $request)
+    {
+        $searchTerm = $request->input('q'); 
+        $kelas = \App\Models\Guru::with('mapel')->where('nama', 'LIKE', '%' . $searchTerm . '%')
+            ->get(['id', 'nama', 'mapel_id'])
+            ->map(function($item) {
+                return [
+                    'id' => $item->id,
+                    'text' => $item->nama . ' - ' . $item->mapel->nama_mapel
+                ];
+            })
+            ->toArray();
+
+        return response()->json($kelas);  // Kembalikan sebagai JSON
+    }
 }

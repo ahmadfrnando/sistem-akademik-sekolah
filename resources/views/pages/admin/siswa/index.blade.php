@@ -86,8 +86,6 @@
 
         $(document).on('click', '#create', function() {
             let formSelector = '#submitForm';
-            document.getElementById("submitForm").reset();
-            $('#kelas_id').val(null).trigger('change');
             $('#kelas_id').select2({
                 placeholder: 'Pilih Kelas',
                 allowClear: true,

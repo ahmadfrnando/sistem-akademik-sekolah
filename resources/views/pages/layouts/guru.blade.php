@@ -68,47 +68,10 @@
                     <ul class="menu">
                         <li class="sidebar-title">Home</li>
                         <li
-                            class="sidebar-item {{ request()->is('admin/dashboard*') ? 'active' : '' }}">
-                            <a href="{{ route('admin.dashboard') }}" class='sidebar-link'>
+                            class="sidebar-item {{ request()->is('guru/dashboard*') ? 'active' : '' }}">
+                            <a href="{{ route('guru.dashboard') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-title">Data Master</li>
-                        <li
-                            class="sidebar-item {{ request()->is('admin/siswa*') ? 'active' : '' }}">
-                            <a href="{{ route('admin.siswa.index') }}" class='sidebar-link'>
-                                <i class="bi bi-people-fill"></i>
-                                <span>Siswa</span>
-                            </a>
-                        </li>
-                        <li
-                            class="sidebar-item {{ request()->is('admin/guru*') ? 'active' : '' }}">
-                            <a href="{{ route('admin.guru.index') }}" class='sidebar-link'>
-                                <i class="bi bi-people-fill"></i>
-                                <span>Guru</span>
-                            </a>
-                        </li>
-                        <li
-                            class="sidebar-item {{ request()->is('admin/kelas*') ? 'active' : '' }}">
-                            <a href="{{ route('admin.kelas.index') }}" class='sidebar-link'>
-                                <i class="bi bi-bookmark-fill"></i>
-                                <span>Kelas</span>
-                            </a>
-                        </li>
-                        <li
-                            class="sidebar-item {{ request()->is('admin/mapel*') ? 'active' : '' }}">
-                            <a href="{{ route('admin.mapel.index') }}" class='sidebar-link'>
-                                <i class="bi bi-book-fill"></i>
-                                <span>Mata Pelajaran</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-title">Kelola Data Kelas</li>
-                        <li
-                            class="sidebar-item {{ request()->is('admin/kelola-kelas*') ? 'active' : '' }}">
-                            <a href="{{ route('admin.kelola-kelas.index') }}" class='sidebar-link'>
-                                <i class="bi bi-gear-fill"></i>
-                                <span>Kelola Data Kelas</span>
                             </a>
                         </li>
                         <li
