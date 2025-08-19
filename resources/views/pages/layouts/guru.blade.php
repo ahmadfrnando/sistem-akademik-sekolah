@@ -28,8 +28,8 @@
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
-                        <div class="logo">
-                           <span class="fs-4">E-Learning</span>
+                        <div class="logo d-block">
+                            <span class="fs-4">E-Learning</span>
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -72,6 +72,36 @@
                             <a href="{{ route('guru.dashboard') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-title">Kelas</li>
+                        <li
+                            class="sidebar-item {{ request()->is('guru/data-siswa*') ? 'active' : '' }}">
+                            <a href="{{ route('guru.data-siswa.index') }}" class='sidebar-link'>
+                                <i class="bi bi-people-fill"></i>
+                                <span>Data Siswa</span>
+                            </a>
+                        </li>
+                        <li
+                            class="sidebar-item {{ request()->is('guru/kelola-pembelajaran*') ? 'active' : '' }}">
+                            <a href="{{ route('guru.kelola-pembelajaran.index') }}" class='sidebar-link'>
+                                <i class="bi bi-gear-fill"></i>
+                                <span>Kelola Pembelajaran</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-title">Akun</li>
+                        <li
+                            class="sidebar-item {{ request()->is('guru/user/edit-username') ? 'active' : '' }}">
+                            <a href="{{ route('guru.user.edit-username') }}" class='sidebar-link'>
+                                <i class="bi bi-gear-fill"></i>
+                                <span>Ganti Username</span>
+                            </a>
+                        </li>
+                        <li
+                            class="sidebar-item {{ request()->is('guru/user/edit-password') ? 'active' : '' }}">
+                            <a href="{{ route('guru.user.edit-password') }}" class='sidebar-link'>
+                                <i class="bi bi-gear-fill"></i>
+                                <span>Ganti Password</span>
                             </a>
                         </li>
                         <li

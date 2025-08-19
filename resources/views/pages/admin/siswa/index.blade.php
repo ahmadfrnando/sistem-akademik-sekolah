@@ -110,7 +110,7 @@
             $(modal).find('.modal-title').html('Tambah Siswa');
             let actionUrl = "{{ route('admin.siswa.store') }}";
             let successMessage = 'Data berhasil disimpan!';
-            submitFormAjaxModal(formSelector, actionUrl, successMessage, modal, table);
+            submitFormAjaxModal(formSelector, actionUrl, successMessage);
         })
 
         $(document).on('click', '#edit, .btn-edit', function() {
@@ -191,7 +191,7 @@
             $form.attr('method', 'POST'); // Sementara set ke POST
             $form.append('<input type="hidden" name="_method" value="PUT">'); // Menambahkan _method untuk mengindikasikan PUT
 
-            let actionUrl = "{{ route('admin.ubah-password.update', ':id') }}".replace(':id', id);
+            let actionUrl = "{{ route('admin.password.update', ':id') }}".replace(':id', id);
             let successMessage = 'Data berhasil diubah!';
             submitFormAjaxModal('#submitUpdatePasswordForm', actionUrl, successMessage, '#modalUpdatePasswordForm', table);
         });

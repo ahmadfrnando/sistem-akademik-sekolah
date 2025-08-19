@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->hasOne(RefRole::class);
+        return $this->belongsTo(RefRole::class);
     }
 
     public function siswa()

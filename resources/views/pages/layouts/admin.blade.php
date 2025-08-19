@@ -29,7 +29,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                           <span class="fs-4">E-Learning</span>
+                            <span class="fs-4">E-Learning</span>
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -103,18 +103,35 @@
                                 <span>Mata Pelajaran</span>
                             </a>
                         </li>
-                        <li class="sidebar-title">Kelola Data Kelas</li>
+                        <li class="sidebar-title">Kelola</li>
                         <li
-                            class="sidebar-item {{ request()->is('admin/kelola-kelas*') ? 'active' : '' }}">
-                            <a href="{{ route('admin.kelola-kelas.index') }}" class='sidebar-link'>
+                            class="sidebar-item {{ request()->is('admin/kelola-guru-kelas*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.kelola-guru-kelas.index') }}" class='sidebar-link'>
+                                <i class="bi bi-person-video3"></i>
+                                <span>Guru Kelas</span>
+                            </a>
+                        </li>
+                        <li
+                            class="sidebar-item {{ request()->is('admin/kelola-siswa-kelas*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.kelola-siswa-kelas.index') }}" class='sidebar-link'>
+                                <i class="bi bi-person-video3"></i>
+                                <span>Siswa Kelas</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-title">
+                            <hr>
+                        </li>
+                        <li
+                            class="sidebar-item {{ request()->is('admin/user*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.user.index') }}" class='sidebar-link'>
                                 <i class="bi bi-gear-fill"></i>
-                                <span>Kelola Data Kelas</span>
+                                <span>Ganti Password</span>
                             </a>
                         </li>
                         <li
                             class="sidebar-item">
                             <button type="button" id="logout" class="sidebar-link">
-                                <i class="bi bi-arrow-bar-left"></i>
+                                <i class="bi bi-power"></i>
                                 <span>Keluar</span>
                             </button>
                         </li>
@@ -171,7 +188,6 @@
     <script src="/assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
     <script src="/assets/static/js/pages/datatables.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

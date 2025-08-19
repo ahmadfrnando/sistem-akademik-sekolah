@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,9 +34,12 @@ class AuthController extends Controller
                 return redirect()->intended('siswa/dashboard');
             }
         }
-        return back()->withErrors([
-            'username' => 'Username tidak terdaftar atau kata sandi salah.',
-        ])->withInput();
+
+        return back()->with('swal', [
+            'icon' => 'error',
+            'title' => 'Gagal',
+            'text' => 'Username tidak terdaftar atau kata sandi salah.',
+        ]);
     }
 
     public function logout(Request $request)
@@ -44,5 +48,14 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return response()->json(['success' => true]);
+    }
+
+    public function edit()
+    {
+        $user = Auth::user();
+        return response()->json([
+            'success' => true,
+            'data' => $user
+        ]);
     }
 }

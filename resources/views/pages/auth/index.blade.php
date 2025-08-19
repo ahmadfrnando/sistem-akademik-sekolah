@@ -20,12 +20,12 @@
 				<div class="card-content">
 					<div class="card-body">
 						<div id="auth-left">
-							<h1 class="auth-title">Masuk</h1>
-							<p class="auth-subtitle mb-5">Silahkan masukan username dan password</p>
+							<h5 class="auth-title" style="font-size: 3rem !important">Masuk</h5>
+							<p class="auth-subtitle mb-5" style="font-size: 1.5rem !important">Silahkan masukan username dan password</p>
 							<form action="{{ route('login') }}" method="POST">
 								@csrf
 								<div class="form-group position-relative has-icon-left mb-4">
-									<input type="text" name="username" class="form-control form-control-xl" placeholder="Username">
+									<input type="text" name="username" value="{{ old('username') }}" class="form-control form-control-xl" placeholder="Username">
 									<div class="form-control-icon">
 										<i class="bi bi-person"></i>
 									</div>
@@ -44,6 +44,13 @@
 			</div>
 		</div>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	@if (session('swal'))
+	<script>
+		Swal.fire(@json(session('swal')));
+	</script>
+	@endif
+
 </body>
 
 </html>

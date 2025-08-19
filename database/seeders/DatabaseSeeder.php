@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Guru;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,23 +22,12 @@ class DatabaseSeeder extends Seeder
             'role_id' => 1
         ]);
 
-        \App\Models\User::factory()->create([
-            'name' => 'Siswa',
-            'username' => 'siswa',
-            'password' => Hash::make('123'),
-            'role_id' => 3
-        ]);
-
-        \App\Models\User::factory()->create([
-            'name' => 'Guru',
-            'username' => 'guru',
-            'password' => Hash::make('123'),
-            'role_id' => 2
-        ]);
-
         $this->call([
             SiswaSeeder::class,
             GuruSeeder::class,
+            GuruKelasSeeder::class,
+            MateriSeeder::class,
+            TanggapanMateriSeeder::class
         ]);
     }
 }

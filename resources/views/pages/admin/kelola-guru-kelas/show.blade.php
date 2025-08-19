@@ -1,11 +1,11 @@
 @extends('pages.layouts.admin')
 
-@section('title', 'Detail Kelas')
-@section('description', 'Berikut adalah semua data kelas yang telah tercatat.')
+@section('title', 'Data Mata Pelajaran')
+@section('description', 'Berikut adalah semua data mata pelajaran yang telah tercatat.')
 
 @section('content')
 <section class="section">
-    <a href="{{ route('admin.kelola-kelas.index') }}" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
+    <a href="{{ route('admin.kelola-guru-kelas.index') }}" class="btn mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
     <div class="col-12">
         <div class="card">
             <div class="card-body">
@@ -47,6 +47,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Guru</th>
+                                <th>Mata Pelajaran</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -56,12 +57,12 @@
             </div>
         </div>
     </div>
-    @include('pages.admin.kelola-kelas.create-modal')
+    @include('pages.admin.kelola-guru-kelas.create-modal')
 </section>
 @push('scripts')
 <script type="text/javascript">
     $(function() {
-        var route = "{{ route('admin.kelola-kelas.show', $kelas->id) }}";
+        var route = "{{ route('admin.kelola-guru-kelas.show', $kelas->id) }}";
         var selector = ".data-table";
         var columns = [{
                 data: 'DT_RowIndex',
@@ -73,6 +74,12 @@
             {
                 data: 'guru',
                 name: 'guru',
+                orderable: true,
+                searchable: true
+            },
+            {
+                data: 'mapel',
+                name: 'mapel',
                 orderable: true,
                 searchable: true
             },
@@ -113,14 +120,14 @@
             });
             let modal = '#modalForm';
             $(modal).find('.modal-title').html('Tambah Guru');
-            let actionUrl = "{{ route('admin.kelola-kelas.store') }}";
+            let actionUrl = "{{ route('admin.kelola-guru-kelas.store') }}";
             let successMessage = 'Data berhasil disimpan!';
             submitFormAjaxModal(formSelector, actionUrl, successMessage, modal, table);
         })
 
         $(document).on('click', '#delete', function() {
             var id = $(this).data('id');
-            var route = "{{ route('admin.kelola-kelas.destroy', ':id') }}";
+            var route = "{{ route('admin.kelola-guru-kelas.destroy', ':id') }}";
             route = route.replace(':id', id);
             deleteDataAjax(route, table);
         });

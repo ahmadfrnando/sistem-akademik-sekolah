@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\AkunRequest;
 use App\Http\Requests\ChangePasswordRequest;
-use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class AkunController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -57,7 +59,12 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function updateAkun(UserRequest $request, string $id)
+    public function update(ChangePasswordRequest $request, string $id)
+    {
+        //
+    }
+
+    public function updateAkun(AkunRequest $request, string $id)
     {
         try {
             $validatedData = $request->validated();

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('guru_id')->constrained('guru')->onDelete('cascade');
             $table->foreignId('kelas_id')->constrained('ref_kelas')->onDelete('cascade');
+            $table->unsignedBigInteger('mapel_id');
             $table->string('nama_kelas');
             $table->timestamps();
         });

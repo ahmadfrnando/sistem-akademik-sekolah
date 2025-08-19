@@ -127,7 +127,7 @@
 
             $form.attr('method', 'POST');
             $form.find('input[name="_method"]').remove(); // Hapus _method jika ada
-            $form.append('<input type="hidden" name="_method" value="PUT">'); 
+            $form.append('<input type="hidden" name="_method" value="PUT">');
 
 
 
@@ -198,7 +198,7 @@
             $form.attr('method', 'POST'); // Sementara set ke POST
             $form.append('<input type="hidden" name="_method" value="PUT">'); // Menambahkan _method untuk mengindikasikan PUT
 
-            let actionUrl = "{{ route('admin.ubah-password.update', ':id') }}".replace(':id', id);
+            let actionUrl = "{{ route('admin.password.update', ':id') }}".replace(':id', id);
             let successMessage = 'Data berhasil diubah!';
             submitFormAjaxModal('#submitUpdatePasswordForm', actionUrl, successMessage, '#modalUpdatePasswordForm', table);
         });

@@ -1,14 +1,14 @@
 @extends('pages.layouts.admin')
 
-@section('title', 'Data Kelas')
-@section('description', 'Berikut adalah semua data kelas yang telah tercatat.')
+@section('title', 'Daftar Kelas')
+@section('description', 'Berikut adalah semua daftar kelas yang telah tercatat.')
 
 @section('content')
 <section class="section">
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">
-                Semua Data Kelas
+                Semua Kelas
             </h5>
         </div>
         <div class="card-body">
@@ -30,7 +30,7 @@
 @push('scripts')
 <script type="text/javascript">
     $(function() {
-        var route = "{{ route('admin.kelola-kelas.index') }}";
+        var route = "{{ route('admin.kelola-guru-kelas.index') }}";
         var selector = ".data-table";
         var columns = [{
                 data: 'DT_RowIndex',

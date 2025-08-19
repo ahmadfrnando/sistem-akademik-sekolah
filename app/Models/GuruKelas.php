@@ -18,6 +18,11 @@ class GuruKelas extends Model
         return $this->belongsTo(Guru::class);
     }
 
+    public function mapel()
+    {
+        return $this->belongsTo(RefMapel::class);
+    }
+
     public function kelas()
     {
         return $this->belongsTo(RefKelas::class);
