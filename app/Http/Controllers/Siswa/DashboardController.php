@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Siswa;
 
+use App\Facades\Pengguna;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,10 @@ class DashboardController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('pages.siswa.index');
+    {   
+        $model = Pengguna::getUserSiswa();
+        $modelMateri = $model->materi()->where('is_done', 0)->latest()->take(5)->get();
+        return view('pages.siswa.index', compact('model', 'modelMateri'));
     }
 
     /**

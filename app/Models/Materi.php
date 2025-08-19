@@ -22,6 +22,11 @@ class Materi extends Model
         return $this->belongsTo(RefMapel::class);
     }
 
+    public function kelas()
+    {
+        return $this->belongsTo(RefKelas::class);
+    }
+
     public function guru()
     {
         return $this->belongsTo(Guru::class);
@@ -30,5 +35,10 @@ class Materi extends Model
     public function tanggapanMateri()
     {
         return $this->hasMany(TanggapanMateri::class);
+    }
+
+    public function tanggapanSiswaCount()
+    {
+        return $this->tanggapanMateri->pluck('siswa_id')->unique()->count();
     }
 }

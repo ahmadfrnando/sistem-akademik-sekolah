@@ -189,6 +189,7 @@ class KelolaPembelajaranController extends Controller
     public function diskusi(Request $request, string $id)
     {
         $dataMateri = $this->materi->findOrFail($id);
-        return view('pages.guru.kelola-pembelajaran.diskusi-materi.index', compact('dataMateri'));
+        $tanggapans = $dataMateri->tanggapanMateri()->with('siswa')->orderBy('created_at', 'desc')->paginate(10);
+        return view('pages.guru.kelola-pembelajaran.diskusi-materi.index', compact('dataMateri', 'tanggapans'));
     }
 }

@@ -47,4 +47,14 @@ class Siswa extends Model
     {
         return $this->belongsTo(User::class); // Setiap siswa dimiliki oleh satu user
     }
+
+    public function mapel()
+    {
+        return $this->belongsTo(RefMapel::class);
+    }
+
+    public function materi()
+    {
+        return $this->hasManyThrough(Materi::class, GuruKelas::class, 'kelas_id', 'kelas_id', 'kelas_id', 'kelas_id');
+    }
 }

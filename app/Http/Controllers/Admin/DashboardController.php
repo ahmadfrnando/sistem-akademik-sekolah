@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Guru;
+use App\Models\RefKelas;
+use App\Models\RefMapel;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -11,8 +15,14 @@ class DashboardController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('pages.admin.index');
+    {   
+        $total = [
+            'guru' => Guru::count(),
+            'siswa' => Siswa::count(),
+            'kelas' => RefKelas::count(),
+            'mapel' => RefMapel::count(),
+        ];
+        return view('pages.admin.index', compact('total'));
     }
 
     /**

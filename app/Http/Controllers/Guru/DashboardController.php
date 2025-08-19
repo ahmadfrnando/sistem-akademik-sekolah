@@ -12,8 +12,10 @@ class DashboardController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('pages.guru.index');
+    {   
+        $model = Pengguna::getUserGuru();
+        $modelMateri = $model->materi()->where('is_done', 0)->latest()->take(5)->get();
+        return view('pages.guru.index', compact('model', 'modelMateri'));
     }
 
     /**
