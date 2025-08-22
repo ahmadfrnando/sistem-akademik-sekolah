@@ -20,7 +20,7 @@ class TanggapanMateriFactory extends Factory
         $materi = Materi::findOrFail(1);
         return [
             'materi_id' => $materi->id,
-            'tanggapan' => $this->faker->text(100),
+            'tanggapan' => 'Bahasa indonesia adalah bahasa yang paling penting. dan menjadi bahasa persatuan yang paling penting di dinegeri.',
             'file' => $this->faker->imageUrl(640, 480),
             'siswa_id' => 1,
             'guru_id' => $materi->guru_id,

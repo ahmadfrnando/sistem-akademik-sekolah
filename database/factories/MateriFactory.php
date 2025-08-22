@@ -22,7 +22,7 @@ class MateriFactory extends Factory
         return [
             'mapel_id' => $guru->mapel_id,
             'nama_materi' => $guru->mapel->nama_mapel . ' Lanjutan',
-            'deskripsi' => fake()->paragraph(2),
+            'deskripsi' => 'kerjakan soal ini dengan baik dan benar, modul ada di file materi ini, semangat!',
             'guru_id' => $guru->guru_id,
             'kelas_id' => 1,
             'file_materi' => 'example/test.pdf',
